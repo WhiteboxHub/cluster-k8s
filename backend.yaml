@@ -1,0 +1,108 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: wbl-backend-deployment
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: wbl-backend
+#   template:
+#     metadata:
+#       labels:
+#         app: wbl-backend
+#     spec:
+#       containers:
+#       - name: wbl-backend
+#         image: remote123/whiteboxlearning:server-new
+#         ports:
+#         - containerPort: 8000
+#         # envFrom:
+#         # - secretRef:
+#         #     name: wbl-backend-env-secret
+
+# ---
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: wbl-backend-service
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: wbl-backend
+#   ports:
+#   - protocol: TCP
+#     port: 80
+#     targetPort: 8000
+
+
+
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: remote123/whiteboxlearning:bckendd
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ENV
+          value: "production"
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: DB_HOST
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: DB_PASSWORD
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: DB_NAME
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: DB_PORT
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: SECRET_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP  # Changed to ClusterIP for Ingress to manage external access
