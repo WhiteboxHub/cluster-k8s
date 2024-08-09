@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: remote123/whiteboxlearning:bckendd
+        image: remote123/whiteboxlearning:server_prod
         ports:
         - containerPort: 8000
         env:
