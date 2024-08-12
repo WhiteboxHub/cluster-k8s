@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wbl-resume-backend-deployment
+  labels:
+    app: wbl-resume-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wbl-resume-backend
+  template:
+    metadata:
+      labels:
+        app: wbl-resume-backend
+    spec:
+      containers:
+        - name: wbl-resume-backend
+          image: remote123/whiteboxlearning:resume-backend
+          ports:
+            - containerPort: 8001
+          env:
+            - name: ENV
+              value: "production"
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_HOST
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_NAME
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_PORT
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wbl-resume-backend-service
+spec:
+  selector:
+    app: wbl-resume-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8001
+  type: ClusterIP

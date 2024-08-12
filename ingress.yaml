@@ -11,42 +11,56 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-  - hosts:
-    - whitebox-learning.com
-    - www.whitebox-learning.com
-    secretName: wbl-tls-secret
+    - hosts:
+        - whitebox-learning.com
+        - www.whitebox-learning.com
+      secretName: wbl-tls-secret
   rules:
-  - host: whitebox-learning.com
-    http:
-      paths:
-      - path: /api
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 80
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: wbl-frontend-new-service
-            port:
-              number: 80
-  - host: www.whitebox-learning.com
-    http:
-      paths:
-      - path: /api
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 80
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: wbl-frontend-new-service
-            port:
-              number: 80
+    - host: whitebox-learning.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 80
+          - path: /resume # Route for resume-backend
+            pathType: Prefix
+            backend:
+              service:
+                name: resume-backend-service # Make sure this matches the service name in resume-backend.yml
+                port:
+                  number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wbl-frontend-new-service
+                port:
+                  number: 80
+    - host: www.whitebox-learning.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 80
+          - path: /resume # Route for resume-backend
+            pathType: Prefix
+            backend:
+              service:
+                name: resume-backend-service # Make sure this matches the service name in resume-backend.yml
+                port:
+                  number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wbl-frontend-new-service
+                port:
+                  number: 80
