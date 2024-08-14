@@ -26,11 +26,11 @@ spec:
                 name: backend-service
                 port:
                   number: 80
-          - path: /resume # Route for resume-backend
+          - path: /api/resume # Route for resume-backend
             pathType: Prefix
             backend:
               service:
-                name: resume-backend-service # Make sure this matches the service name in resume-backend.yml
+                name: wbl-resume-backend-service # Make sure this matches the service name in resume-backend.yml
                 port:
                   number: 80
           - path: /
@@ -50,11 +50,11 @@ spec:
                 name: backend-service
                 port:
                   number: 80
-          - path: /resume # Route for resume-backend
+          - path: /api/resume # Route for resume-backend
             pathType: Prefix
             backend:
               service:
-                name: resume-backend-service # Make sure this matches the service name in resume-backend.yml
+                name: wbl-resume-backend-service # Make sure this matches the service name in resume-backend.yml
                 port:
                   number: 80
           - path: /
