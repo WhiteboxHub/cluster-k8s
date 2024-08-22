@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: wbl-resume-backend
-          image: remote123/whiteboxlearning:resume-backend
+          image: remote123/whiteboxlearning:resume-server
           ports:
             - containerPort: 8001
           env:
@@ -47,6 +47,11 @@ spec:
                 secretKeyRef:
                   name: db-secrets
                   key: DB_PORT
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: SECRET_KEY
 ---
 apiVersion: v1
 kind: Service
