@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: wbl-resume-backend
-          image: remote123/whiteboxlearning:resume-server
+          image: remote123/whiteboxlearning:resumeee-serverrr
           ports:
             - containerPort: 8001
           env:
