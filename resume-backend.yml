@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: wbl-resume-backend
-          image: remote123/whiteboxlearning:resumeee-serverrr
+          image: remote123/whiteboxlearning:resume-backenddd
           ports:
             - containerPort: 8001
           env:
@@ -52,6 +52,13 @@ spec:
                 secretKeyRef:
                   name: db-secrets
                   key: SECRET_KEY
+          resources:
+            requests:
+              cpu: "200m"      # Minimum CPU requested
+              memory: "256Mi"  # Minimum memory requested
+            limits:
+              cpu: "500m"      # Max CPU usage
+              memory: "512Mi"  # Max memory usage
 ---
 apiVersion: v1
 kind: Service
