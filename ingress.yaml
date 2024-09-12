@@ -50,7 +50,7 @@ spec:
                 name: backend-service
                 port:
                   number: 80
-          - path: /api/resume # Route for resume-backend
+          - path: /api/node # Route for resume-backend
             pathType: Prefix
             backend:
               service:
