@@ -26,7 +26,7 @@ spec:
                 name: backend-service
                 port:
                   number: 80
-          - path: /api/resume # Route for resume-backend
+          - path: /api/node # Route for resume-backend
             pathType: Prefix
             backend:
               service:
@@ -40,6 +40,20 @@ spec:
                 name: wbl-frontend-new-service
                 port:
                   number: 80
+          - path: /admin
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-frontend-service
+                port:
+                  number: 80
+          # - path: /admin/api
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: admin-backend-service
+          #       port:
+          #         number: 80
     - host: www.whitebox-learning.com
       http:
         paths:
@@ -64,3 +78,17 @@ spec:
                 name: wbl-frontend-new-service
                 port:
                   number: 80
+          - path: /admin
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-frontend-service
+                port:
+                  number: 80
+          # - path: /admin/api
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: admin-backend-service
+          #       port:
+          #         number: 80
