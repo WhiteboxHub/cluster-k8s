@@ -115,6 +115,13 @@ spec:
                 secretKeyRef:
                   name: db-secrets
                   key: RESET_PASSWORD_URL
+          resources:
+            requests:
+              cpu: "200m"      # Minimum CPU requested
+              memory: "256Mi"  # Minimum memory requested
+            limits:
+              cpu: "500m"      # Max CPU usage
+              memory: "512Mi"  # Max memory usage
 ---
 apiVersion: v1
 kind: Service
@@ -127,4 +134,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8000
-  type: ClusterIP # Changed to ClusterIP for Ingress to manage external access
+  type: ClusterIP # For internal access, with Ingress managing external access
