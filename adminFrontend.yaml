@@ -31,7 +31,7 @@ kind: Service
 metadata:
   name: admin-frontend-service
 spec:
-  type: ClusterIP  # ClusterIP is correct for internal services with Ingress handling external access
+  type:  LoadBalancer   # ClusterIP is correct for internal services with Ingress handling external access
   selector:
     app: admin-frontend
   ports:
