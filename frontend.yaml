@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: wbl-frontend-new
-        image: remote123/whiteboxlearning:client-wblll
+        image: remote123/whiteboxlearning:clienttt-frontenddd
         ports:
         - containerPort: 3000
         resources:

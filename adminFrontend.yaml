@@ -1,12 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  # name: react-app-deployment
   name: admin-frontend-deployment
-  labels:
-    app: admin-frontend
 spec:
-  replicas: 1  # Adjust replicas as per your needs
+  replicas: 1
   selector:
     matchLabels:
       app: admin-frontend
@@ -17,27 +14,27 @@ spec:
     spec:
       containers:
       - name: admin-frontend
-        image: remote123/whiteboxlearning:admin_app  # Use the image name you've chosen
+        image: remote123/whiteboxlearning:admin_appp
         ports:
-        - containerPort: 3000  # Port that the app is exposed on
+        - containerPort: 4000
         resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
           requests:
-            memory: "256Mi"
-            cpu: "200m"
-          
+            cpu: "200m"      # Minimum CPU requested
+            memory: "256Mi"  # Minimum memory requested
+          limits:
+            cpu: "500m"      # Max CPU usage
+            memory: "512Mi"  # Max memory usage
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: admin-frontend-service
 spec:
+  type: ClusterIP  # ClusterIP is correct for internal services with Ingress handling external access
   selector:
     app: admin-frontend
   ports:
-    - protocol: TCP
-      port: 80  # The port exposed externally
-      targetPort: 3000  # The port that the container is listening on
-  type: ClusterIP  # ClusterIP is correct for internal services with Ingress handling external access
+  - protocol: TCP
+    port: 80
+    targetPort: 4000
