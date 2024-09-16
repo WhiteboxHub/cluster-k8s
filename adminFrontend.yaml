@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v1  
 kind: Deployment
 metadata:
   name: admin-frontend-deployment
@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: admin-frontend
-        image: remote123/whiteboxlearning:admin_appp
+        image: remote123/whiteboxlearning:admn_appp       
         ports:
-        - containerPort: 4000
+        - containerPort: 5000
         resources:
           requests:
             cpu: "200m"      # Minimum CPU requested
@@ -31,10 +31,10 @@ kind: Service
 metadata:
   name: admin-frontend-service
 spec:
-  type:  LoadBalancer   # ClusterIP is correct for internal services with Ingress handling external access
+  type:  LoadBalancer # ClusterIP is correct for internal services with Ingress handling external access
   selector:
     app: admin-frontend
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 4000
+    targetPort: 5000
