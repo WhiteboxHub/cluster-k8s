@@ -69,6 +69,6 @@ spec:
     app: admin-backendd # Match the label defined in the Deployment
   ports:
     - protocol: TCP
-      port: 8005 # Service port
+      port: 80 # Service port
       targetPort: 8005 # Port exposed by the container
   type: LoadBalancer # For internal access, with Ingress managing external access
