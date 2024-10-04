@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: admin-frontend
-        image: remote123/whiteboxlearning:admn_appp       
+        image: remote123/whiteboxlearning:frontend_wbl_admin
         ports:
-        - containerPort: 5000
+        - containerPort: 3000
         resources:
           requests:
             cpu: "200m"      # Minimum CPU requested
@@ -37,4 +37,4 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 5000
+    targetPort: 3000
