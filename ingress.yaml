@@ -48,13 +48,13 @@ spec:
                 name: admin-frontend-service
                 port:
                   number: 80
-          # - path: /admin/api
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: admin-backend-service
-          #       port:
-          #         number: 80
+          - path: /api/admin
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-backendd-service
+                port:
+                  number: 80
     - host: www.whitebox-learning.com
       http:
         paths:
@@ -86,10 +86,10 @@ spec:
                 name: admin-frontend-service
                 port:
                   number: 80
-          # - path: /admin/api
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: admin-backend-service
-          #       port:
-          #         number: 80
+          - path: /api/admin
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-backendd-service
+                port:
+                  number: 80

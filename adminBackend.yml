@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-backendd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-backendd
+  template:
+    metadata:
+      labels:
+        app: admin-backendd
+    spec:
+      imagePullSecrets:
+        - name: db-secrets # Reference your Docker registry secret here
+      containers:
+        - name: admin-backendd
+          image: remote123/whiteboxlearning:nadminbackend # Ensure this image exists
+          ports:
+            - containerPort: 8005 # Correct port for your application
+          env:
+            - name: ENV
+              value: "production"
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_HOST
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_PASSWORD
+            - name: DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_DATABASE
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: SECRET_KEY
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: PORT
+          resources:
+            requests:
+              cpu: "100m" # Minimum CPU requested
+              memory: "256Mi" # Minimum memory requested
+            limits:
+              cpu: "200m" # Max CPU usage
+              memory: "512Mi" # Max memory usage
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-backendd-service
+spec:
+  selector:
+    app: admin-backendd # Match the label defined in the Deployment
+  ports:
+    - protocol: TCP
+      port: 80 # Service port
+      targetPort: 8005 # Port exposed by the container
+  type: LoadBalancer # For internal access, with Ingress managing external access

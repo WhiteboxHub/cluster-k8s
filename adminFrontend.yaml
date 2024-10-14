@@ -1,0 +1,40 @@
+apiVersion: apps/v1  
+kind: Deployment
+metadata:
+  name: admin-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-frontend
+  template:
+    metadata:
+      labels:
+        app: admin-frontend
+    spec:
+      containers:
+      - name: admin-frontend
+        image: remote123/whiteboxlearning:frontend_wbl_admin
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "200m"      # Minimum CPU requested
+            memory: "256Mi"  # Minimum memory requested
+          limits:
+            cpu: "500m"      # Max CPU usage
+            memory: "512Mi"  # Max memory usage
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-frontend-service
+spec:
+  type:  LoadBalancer # ClusterIP is correct for internal services with Ingress handling external access
+  selector:
+    app: admin-frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
