@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: remote123/whiteboxlearning:serverrr
+          image: remote123/whiteboxlearning:new_wbl_backendd
           ports:
             - containerPort: 8000
           env:
@@ -134,4 +134,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8000
-  type: ClusterIP # For internal access, with Ingress managing external access
+  type: LoadBalancer # For internal access, with Ingress managing external access
