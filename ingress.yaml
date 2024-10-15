@@ -20,6 +20,13 @@ spec:
     - host: whitebox-learning.com
       http:
         paths:
+          - path: /api/auth
+            pathType: Prefix
+            backend:
+              service:
+                name: wbl-frontend-new-service # Directing auth to the frontend service
+                port:
+                  number: 80
           - path: /api
             pathType: Prefix
             backend:
@@ -58,6 +65,13 @@ spec:
     - host: www.whitebox-learning.com
       http:
         paths:
+          - path: /api/auth
+            pathType: Prefix
+            backend:
+              service:
+                name: wbl-frontend-new-service # Directing auth to the frontend service
+                port:
+                  number: 80
           - path: /api
             pathType: Prefix
             backend:

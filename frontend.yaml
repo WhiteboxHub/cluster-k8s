@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: wbl-frontend-new
-        image: remote123/whiteboxlearning:wbl_frntends
+        image: remote123/whiteboxlearning:wbl_frntendsss
         ports:
         - containerPort: 3000
         resources:
@@ -25,7 +25,7 @@ spec:
             cpu: "500m"      # Max CPU usage
             memory: "512Mi"  # Max memory usage
         env:
-        - name: NEXTAUTH_URL
+        - name: NEXTAUTH_URL 
           value: "https://www.whitebox-learning.com"
         - name: GOOGLE_CLIENT_ID
           value: "1016560856146-gamjkojjnfgr74cov09lfc861a8f8o36.apps.googleusercontent.com"
