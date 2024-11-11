@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: remote123/whiteboxlearning:new_wbl_backendd
+          image: remote123/whiteboxlearning:new_wbl_bcckend2
           ports:
             - containerPort: 8000
           env:
