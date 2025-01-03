@@ -16,7 +16,7 @@ spec:
         - name: db-secrets # Reference your Docker registry secret here
       containers:
         - name: admin-backendd
-          image: remote123/whiteboxlearning:nadminbackend # Ensure this image exists
+          image: remote123/whiteboxlearning:adminnn-backenddd1 # Ensure this image exists nadminbackend
           ports:
             - containerPort: 8005 # Correct port for your application
           env:

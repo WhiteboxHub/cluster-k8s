@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: admin-frontend
-        image: remote123/whiteboxlearning:frontend_wbl_admin
+        image: remote123/whiteboxlearning:frontend_wbl_admin2
         ports:
         - containerPort: 3000
         resources:
