@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: admin-frontend
-        image: remote123/avatar_app:client
+        image: remote123/avatar_app:avatar-frontendv1321
         ports:
         - containerPort: 3000
         resources:
