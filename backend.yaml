@@ -135,3 +135,4 @@ spec:
       port: 80
       targetPort: 8000
   type: LoadBalancer # For internal access, with Ingress managing external access
+# wbl-backend-v1
