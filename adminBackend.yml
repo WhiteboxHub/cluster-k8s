@@ -90,7 +90,7 @@ spec:
     spec:
       containers:
         - name: admin-backendd
-          image: remote123/avatar_app:avatar-backend-v23  
+          image: remote123/avatar_app:avatar-backend-v25 
           ports:
             - containerPort: 8005  # Updated for FastAPI
           env:
