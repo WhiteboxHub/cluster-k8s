@@ -15,7 +15,7 @@ spec:
     - hosts:
         - whitebox-learning.com
         - www.whitebox-learning.com
-      secretName: wbl-tls-secret
+      secretName: whitebox-tls
   rules:
     - host: whitebox-learning.com
       http:
