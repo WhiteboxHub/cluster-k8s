@@ -14,7 +14,11 @@ spec:
     spec:
       containers:
         - name: backend
-          image: remote123/v1:backend-wbll-v1
+          # image: remote123/v1:backend-wbll-v1
+          image: remote123/wbl:wbl-backend-v13
+          
+          
+
           # wbl-backend125
           ports:
             - containerPort: 8000

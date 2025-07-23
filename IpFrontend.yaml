@@ -1,0 +1,40 @@
+apiVersion: apps/v1  
+kind: Deployment
+metadata:
+  name: ip-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ip-frontend
+  template:
+    metadata:
+      labels:
+        app: ip-frontend
+    spec:
+      containers:
+      - name: ip-frontend
+        image: remote123/innova-path:ip-frontend-v4
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "200m"      # Minimum CPU requested
+            memory: "256Mi"  # Minimum memory requested
+          limits:
+            cpu: "500m"      # Max CPU usage
+            memory: "512Mi"  # Max memory usage
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ip-frontend-service
+spec:
+  type:  LoadBalancer # ClusterIP is correct for internal services with Ingress handling external access
+  selector:
+    app: ip-frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
