@@ -15,7 +15,7 @@ spec:
       containers:
         - name: backend
           # image: remote123/v1:backend-wbll-v1
-          image: remote123/wbl:wbl-backend-v13
+          image: remote123/wbl:wbl-backend-6
           
           
 
