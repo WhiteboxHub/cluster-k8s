@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
         - name: backend
-          # image: remote123/v1:backend-wbll-v1
-          image: remote123/wbl:wbl-backend-6
+    
+          image: remote123/wbl:wbl-backend-18
+          # image: remote123/wbl:wbl-backend-16
           
           
 
@@ -105,6 +106,11 @@ spec:
                 secretKeyRef:
                   name: db-secrets
                   key: TO_RECRUITING_EMAIL
+            - name: TO_ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: TO_ADMIN_EMAIL
             - name: SMTP_SERVER
               valueFrom:
                 secretKeyRef:

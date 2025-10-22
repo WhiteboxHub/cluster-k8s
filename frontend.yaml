@@ -14,10 +14,8 @@ spec:
     spec:
       containers:
       - name: wbl-frontend-new
-        # image: remote123/v1:front-wbll-v2
-        image: remote123/wbl:nextjs-app-v13
-        # remote123/whiteboxlearning:new-wbl-frontend
-        # remote123/wbl:clientt
+        image: remote123/wbl:nextjs-app-18
+        # image: remote123/wbl:nextjs-app-16
         ports:
         - containerPort: 3000
         resources:
