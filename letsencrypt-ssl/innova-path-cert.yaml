@@ -1,0 +1,14 @@
+# cluster-k8s\innova-path-cert.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: innova-path-tls
+  namespace: default
+spec:
+  secretName: innova-path-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - innova-path.com
+    - www.innova-path.com

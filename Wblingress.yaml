@@ -24,7 +24,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: wbl-frontend-new-service # Directing auth to the frontend service
+                name: wbl-frontend-new-service 
                 port:
                   number: 80
           - path: /api
@@ -33,35 +33,14 @@ spec:
               service:
                 name: backend-service
                 port:
-                  number: 80
-          # - path: /api/node # Route for resume-backend
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: wbl-resume-backend-service # Make sure this matches the service name in resume-backend.yml
-          #       port:
-          #         number: 80
+                  number: 80        
           - path: /
             pathType: Prefix
             backend:
               service:
                 name: wbl-frontend-new-service
                 port:
-                  number: 80
-          # - path: /admin
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: admin-frontend-service
-          #       port:
-          #         number: 80
-          # - path: /api/admin
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: admin-backendd-service
-          #       port:
-          #         number: 80
+                  number: 80      
     - host: www.whitebox-learning.com
       http:
         paths:
@@ -69,7 +48,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: wbl-frontend-new-service # Directing auth to the frontend service
+                name: wbl-frontend-new-service 
                 port:
                   number: 80
           - path: /api
@@ -78,14 +57,7 @@ spec:
               service:
                 name: backend-service
                 port:
-                  number: 80
-          # - path: /api/node # Route for resume-backend
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: wbl-resume-backend-service # Make sure this matches the service name in resume-backend.yml
-          #       port:
-          #         number: 80
+                  number: 80        
           - path: /
             pathType: Prefix
             backend:
@@ -93,17 +65,4 @@ spec:
                 name: wbl-frontend-new-service
                 port:
                   number: 80 
-          # - path: /admin
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: admin-frontend-service
-          #       port:
-          #         number: 80
-          # - path: /api/admin
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: admin-backendd-service
-          #       port:
-          #         number: 80
+         
